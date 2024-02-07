@@ -2,8 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Author;
-use App\Entity\Book;
 use App\Factory\AuthorFactory;
 use App\Factory\BookFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;

@@ -50,7 +50,7 @@ final class BookFactory extends ModelFactory
             'converImageUrl' => self::faker()->text(255),
             'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
             'description' => self::faker()->text(),
-            'title' => self::faker()->text(255),
+            'title' => self::faker()->text(100)
         ];
     }
 
