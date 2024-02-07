@@ -12,7 +12,7 @@ class MainController extends AbstractController
     #[Route('/', name: 'app_book_index', methods: ['GET'])]
     public function index(BookRepository $bookRepository): Response
     {
-        return $this->render('book/index.html.twig', [
+        return $this->render('main/index.html.twig', [
             'books' => $bookRepository->findBy([], ['title' => 'ASC'], 4),
         ]);
     }
