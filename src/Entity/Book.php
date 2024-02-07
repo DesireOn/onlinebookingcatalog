@@ -17,9 +17,6 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $author = null;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
@@ -35,6 +32,9 @@ class Book
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'books')]
+    private ?Author $author = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -48,18 +48,6 @@ class Book
     public function setTitle(string $title): static
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): static
-    {
-        $this->author = $author;
 
         return $this;
     }
@@ -120,6 +108,18 @@ class Book
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Author
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Author $author): static
+    {
+        $this->author = $author;
 
         return $this;
     }
