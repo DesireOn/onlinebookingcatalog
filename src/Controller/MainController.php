@@ -13,7 +13,7 @@ class MainController extends AbstractController
     public function index(BookRepository $bookRepository): Response
     {
         return $this->render('book/index.html.twig', [
-            'books' => $bookRepository->findAll(),
+            'books' => $bookRepository->findBy([], ['title' => 'ASC'], 4),
         ]);
     }
 }
