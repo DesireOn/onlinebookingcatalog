@@ -3,68 +3,66 @@
 {% block title %}Our books{% endblock %}
 
 {% block body %}
-    <main class="container mx-auto px-4 py-8">
-        <section class="books">
+    <section class="books">
+        <div class="flex flex-wrap w-full mb-8">
+            <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+                <h2 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">The books you will love</h2>
+                <div class="h-1 w-20 bg-blue-500 rounded"></div>
+            </div>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {% for book in books %}
+                <li class="border rounded-lg p-4 shadow-md hover:shadow-lg bg-gray-100 text-center">
+                    <img src="https://dummyimage.com/96x128" alt="Book cover" class="w-24 h-32 mx-auto mb-2">
+                    <h3 class="text-lg font-bold text-gray-800">{{ book.title }}</h3>
+                    <p class="text-gray-600 mb-2">{{ book.author.name}} </p>
+                    <a href="#" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Read more</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+
+
+    <section class="authors py-10">
+        <div class="flex flex-wrap w-full mb-8">
+            <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+                <h2 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Our amazing authors</h2>
+                <div class="h-1 w-20 bg-blue-500 rounded"></div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for author in authors %}
+                <div class="author p-4 border rounded-md shadow-md hover:shadow-lg bg-gray-100">
+                    <img src="https://dummyimage.com/80x80" alt="Author image" class="w-20 h-20 rounded-full mx-auto mb-4">
+                    <h3 class="text-lg font-medium text-gray-800 text-center mb-2">{{ author.name }}</h3>
+                    <p class="text-gray-600 text-sm text-center">{{ author.description }}</p>
+                    <div class="flex justify-center mt-4">
+                        <a href="#" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">See more</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="genres py-10">
+        <div class="container mx-auto">
             <div class="flex flex-wrap w-full mb-8">
                 <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                    <h2 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">The books you will love</h2>
+                    <h2 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Browse by Genre</h2>
                     <div class="h-1 w-20 bg-blue-500 rounded"></div>
                 </div>
             </div>
-            <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {% for book in books %}
-                    <li class="border rounded-lg p-4 shadow-md hover:shadow-lg bg-gray-100 text-center">
-                        <img src="https://dummyimage.com/96x128" alt="Book cover" class="w-24 h-32 mx-auto mb-2">
-                        <h3 class="text-lg font-bold text-gray-800">{{ book.title }}</h3>
-                        <p class="text-gray-600 mb-2">{{ book.author.name}} </p>
-                        <a href="#" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Read more</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </section>
-
-
-        <section class="authors py-10">
-            <div class="flex flex-wrap w-full mb-8">
-                <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                    <h2 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Our amazing authors</h2>
-                    <div class="h-1 w-20 bg-blue-500 rounded"></div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {% for author in authors %}
-                    <div class="author p-4 border rounded-md shadow-md hover:shadow-lg bg-gray-100">
-                        <img src="https://dummyimage.com/80x80" alt="Author image" class="w-20 h-20 rounded-full mx-auto mb-4">
-                        <h3 class="text-lg font-medium text-gray-800 text-center mb-2">{{ author.name }}</h3>
-                        <p class="text-gray-600 text-sm text-center">{{ author.description }}</p>
-                        <div class="flex justify-center mt-4">
-                            <a href="#" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">See more</a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </section>
-
-        <section class="genres py-10">
-            <div class="container mx-auto">
-                <div class="flex flex-wrap w-full mb-8">
-                    <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                        <h2 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Browse by Genre</h2>
-                        <div class="h-1 w-20 bg-blue-500 rounded"></div>
-                    </div>
-                </div>
 {#                <h2 class="text-3xl font-medium text-gray-900 mb-8">Browse by Genre</h2>#}
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                    {% for genre in genres %}
-                        <div class="genre p-4 border rounded-md shadow-md hover:shadow-lg bg-gray-100">
-                            <h3 class="text-lg font-medium text-gray-800 mb-2">{{ genre.title }}</h3>
-                            <p class="text-gray-600">{{ genre.description|slice(0,100) }}...</p>
-                        </div>
-                    {% endfor %}
-                </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                {% for genre in genres %}
+                    <div class="genre p-4 border rounded-md shadow-md hover:shadow-lg bg-gray-100">
+                        <h3 class="text-lg font-medium text-gray-800 mb-2">{{ genre.title }}</h3>
+                        <p class="text-gray-600">{{ genre.description|slice(0,100) }}...</p>
+                    </div>
+                {% endfor %}
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
 {% endblock %}
