@@ -47,7 +47,8 @@ final class AuthorFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'name' => self::faker()->name()
+            'name' => self::faker()->name(),
+            'description' => self::faker()->text
         ];
     }
 
