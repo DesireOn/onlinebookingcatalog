@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/author')]
+#[Route('/authors')]
 class AuthorController extends AbstractController
 {
     #[Route('/', name: 'app_author_index', methods: ['GET'])]
