@@ -3,35 +3,23 @@
 {% block title %}Genre index{% endblock %}
 
 {% block body %}
-    <h1>Genre index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for genre in genres %}
-            <tr>
-                <td>{{ genre.id }}</td>
-                <td>{{ genre.title }}</td>
-                <td>{{ genre.description }}</td>
-                <td>
-                    <a href="{{ path('app_genre_show', {'id': genre.id}) }}">show</a>
-                    <a href="{{ path('app_genre_edit', {'id': genre.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_genre_new') }}">Create new</a>
+    <section class="genres py-10">
+        <div class="container mx-auto">
+            <div class="flex flex-wrap w-full mb-8">
+                <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+                    <h2 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Browse by Genre</h2>
+                    <div class="h-1 w-20 bg-blue-500 rounded"></div>
+                </div>
+            </div>
+            {#                <h2 class="text-3xl font-medium text-gray-900 mb-8">Browse by Genre</h2>#}
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                {% for genre in genres %}
+                    <div class="genre p-4 border rounded-md shadow-md hover:shadow-lg bg-gray-100">
+                        <h3 class="text-lg font-medium text-gray-800 mb-2">{{ genre.title }}</h3>
+                        <p class="text-gray-600">{{ genre.description|slice(0,100) }}...</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 {% endblock %}
