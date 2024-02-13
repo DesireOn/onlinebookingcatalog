@@ -56,10 +56,10 @@
 {#                <h2 class="text-3xl font-medium text-gray-900 mb-8">Browse by Genre</h2>#}
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 {% for genre in genres %}
-                    <div class="genre p-4 border rounded-md shadow-md hover:shadow-lg bg-gray-100">
+                    <a href="{{ path('app_genre_show', {id: genre.id}) }}" class="genre p-4 border rounded-md shadow-md hover:shadow-lg bg-gray-100">
                         <h3 class="text-lg font-medium text-gray-800 mb-2">{{ genre.title }}</h3>
                         <p class="text-gray-600">{{ genre.description|slice(0,100) }}...</p>
-                    </div>
+                    </a>
                 {% endfor %}
             </div>
         </div>
