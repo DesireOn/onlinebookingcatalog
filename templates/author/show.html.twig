@@ -1,26 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Author{% endblock %}
+{% block title %}Book index{% endblock %}
 
 {% block body %}
-    <h1>Author</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ author.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ author.name }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_author_index') }}">back to list</a>
-
-    <a href="{{ path('app_author_edit', {'id': author.id}) }}">edit</a>
-
-    {{ include('author/_delete_form.html.twig') }}
+    <body>
+    <div class="container mx-auto py-16 px-4 md:px-8 lg:px-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="flex justify-center">
+                <img src="https://dummyimage.com/100x100" alt="Author portrait" class="h-48 w-48 object-cover rounded-full shadow-md">
+            </div>
+            <div class="flex flex-col justify-center">
+                <h1 class="text-3xl font-bold mb-2">{{ author.name }}</h1>
+                <p class="text-gray-600">{{ author.description }}</p>
+            </div>
+        </div>
+        <section class="mt-16">
+            <h2 class="text-2xl font-bold mb-4">Books by {{ author.name }}</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {% for book in author.books %}
+                    <div class="border border-gray-200 rounded-md shadow-md p-4 hover:shadow-lg transition duration-200">
+                        <a href="/books/{{ book.id }}" class="text-gray-600 hover:text-blue-500 font-medium underline block mb-2">{{ book.title }}</a>
+                        <img src="https://dummyimage.com/100x100" alt="{{ book.title }} cover" class="h-24 w-full object-cover rounded-md mb-2">
+                        <p class="text-gray-600 text-sm">{{ book.genre.title }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+    </body>
 {% endblock %}
